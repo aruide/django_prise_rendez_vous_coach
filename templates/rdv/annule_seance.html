@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container mt-5 text-white">
+    <h2>Annuler la séance du {{ seance.date }} à {{ seance.heure_debut }}</h2>
+    <p>
+      <strong>Client :</strong> {{ seance.client.username }}
+    </p>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        {% if form.errors %}
+          <div class="alert alert-danger">{{ form.errors.motif_annulation.0 }}</div>
+        {% endif %}
+        {{ form.motif_annulation.label_tag }}
+        {{ form.motif_annulation }}
+      </div>
+      <button type="submit" class="btn btn-danger">Confirmer l'annulation</button>
+      <a href="{% url 'dashboard' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+  </div>
+{% endblock %}

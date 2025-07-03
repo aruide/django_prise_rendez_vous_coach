@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <img src="{% static 'img/logo2.png' %}" alt="Logo CoachéCoulé" class="logo-ship-large" />
+
+  <div class="d-flex justify-content-center align-items-start pt-5 flex-column text-center">
+    <div class="parchment-card mx-auto mt-3">
+      <h1 class="mb-4 pirate-font text-dark">Marre de procrastiner ?</h1>
+      <p class="lead mb-4" style="font-family: 'Georgia', serif; color: #333;">Nos coachs ne jettent pas l’ancre — ils t’aident à larguer les amarres.</p>
+
+      {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}" class="btn btn-outline-dark btn-lg px-5">⚓ Aller au tableau de bord</a>
+      {% else %}
+        <a href="{% url 'signup' %}" class="btn btn-gold btn-lg px-5 pirate-font">🦜 Je veux un coach maintenant !</a>
+        <p class="mt-3 text-dark" style="font-family: 'Georgia', serif;">
+          Déjà membre ? <a href="{% url 'login' %}" class="text-blue text-decoration-underline">Connecte-toi</a>
+        </p>
+      {% endif %}
+
+      <p class="parchment-footer">
+        ☠️ Aucun coach n’a été jeté aux requins durant la conception de cette cale.<br />
+        🧘‍♂️ Jurons sur notre rhum : point de yoga forcé… sauf si c’est ton trésor.
+      </p>
+    </div>
+  </div>
+{% endblock %}

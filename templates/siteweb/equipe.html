@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+  <div class="container py-5 text-light">
+    <h1 class="pirate-heading display-4 fw-bold pirate-heading pirate-font text-white">⚓ Équipage de Coachs</h1>
+    <br />
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for coach in coachs %}
+        <div class="card-personne">
+          <div class="card-wanted-title pirate-font">WANTED</div>
+          <div class="card-status pirate-font">DEAD OR ALIVE</div>
+          {% if coach.photo %}
+            <img src="{{ coach.photo.url }}" alt="pirate avatar" class="card-profile-img" />
+          {% else %}
+            <img src="{% static 'img/default-avatar.png' %}" alt="pirate avatar" class="card-profile-img" />
+          {% endif %}
+          <div class="card-name">
+            <span class="pirate-font">Captain</span> {{ coach.username }}
+          </div>
+          <div class="card-alias">
+            <span class="pirate-font">Nom:</span> "{{ coach.first_name }} {{ coach.last_name }}"
+          </div>
+          {% if coach.description_personnelle %}
+            <div>
+              <span class="pirate-font">Description:</span> {{ coach.description_personnelle }}
+            </div>
+            <br />
+          {% endif %}
+          <div class="card-bounty pirate-font">Reward: 10,000 Doubloons</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

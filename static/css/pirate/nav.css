@@ -1,0 +1,32 @@
+/* navbar.css */
+.navbar {
+  background-color: rgba(15, 32, 39, 0.95); /* fond semi-transparent marine */
+  padding: 1rem 2rem;
+  border-bottom: 2px solid gold;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+  font-family: 'Pirata One', cursive;
+  font-size: 1.8rem;
+}
+
+.navbar-brand:hover {
+  text-shadow: 0 0 6px gold;
+}
+
+.nav-link {
+  color: #fdf5e6 !important;
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-link:hover {
+  color: gold !important;
+  text-shadow: 0 0 3px #ffd700;
+}
+
+.navbar-toggler {
+  border-color: gold;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        color: #3e2c1c;
+        padding: 30px;
+      }
+      .email-container {
+        background-color: rgba(255, 250, 240, 0.9); /* effet parchemin */
+        border: 5px solid #8b5c2c;
+        border-radius: 12px;
+        padding: 40px;
+        max-width: 640px;
+        margin: auto;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      }
+      h1 {
+        font-family: 'Papyrus', 'Georgia', serif;
+        font-size: 28px;
+        color: #5b3b1d;
+        text-align: center;
+      }
+      p {
+        font-size: 18px;
+        line-height: 1.6;
+      }
+      a.button {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 12px 24px;
+        background-color: #8b0000;
+        color: #fff8dc;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 8px;
+        box-shadow: 2px 2px 6px #000;
+      }
+      .footer {
+        font-size: 0.85em;
+        margin-top: 40px;
+        text-align: center;
+        color: #5f4b32;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <h1>⚓ Bienvenue à bord, {{ user.username }} !</h1>
+      <p>Merci d’avoir rejoint notre équipage. Avant de hisser les voiles, il te faut activer ton compte moussaillon !</p>
+      <p>Appuie sur ce bouton magique pour rejoindre le navire :</p>
+      <p style="text-align:center;">
+        <a href="{{ activation_url }}" class="button">⚔️ Activer mon compte</a>
+      </p>
+      <p class="footer">Si ce message vous est parvenu par erreur, laissez-le dériver au large comme une bouteille à la mer.</p>
+    </div>
+  </body>
+</html>
