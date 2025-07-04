@@ -10,7 +10,7 @@ def accueil(request):
 
 @login_required
 def dashboard(request):
-    if request.user.groups.filter(name='coach').exists() or request.user.is_superuser:
+    if request.user.groups.filter(name__in=['coach', 'coach admin']).exists() or request.user.is_superuser:
         seances = Seance.objects.all().order_by('date', 'heure_debut')
         return render(request, 'rdv/dashboard_coach.html', {'seances': seances})
     else:
@@ -28,4 +28,4 @@ def prendre_rdv(request):
             return redirect('dashboard')
     else:
         form = SeanceForm()
-    return render(request, 'prise_rdv.html', {'form': form})
+    return render(request, 'rdv/prise_rdv.html', {'form': form})

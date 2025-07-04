@@ -1,6 +1,82 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<h2>Bienvenue !</h2>
-<p>Réservez une séance de coaching en ligne simplement et rapidement.</p>
+<style>
+    .hero-section {
+        background: url("{% static 'img/montagnes.jpg' %}") no-repeat center center;
+        background-size: cover;
+        min-height: 100vh;
+        position: relative;
+        color: white;
+    }
+
+    .hero-overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+</style>
+
+<div class="hero-section d-flex align-items-center">
+    <div class="hero-overlay"></div>
+    <div class="container text-center hero-content py-5">
+        <h1 class="display-4 fw-bold mb-4">🚀 Marre de procrastiner ?</h1>
+        <p class="lead mb-4">
+            Nos coachs t’aident à gravir la montagne de ta vie (sans sherpa, mais presque).
+        </p>
+
+        <div class="row g-4 mb-5 justify-content-center">
+            <div class="col-md-4">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">💡 Coaching perso</h5>
+                        <p class="card-text">Nos coachs s'adaptent à toi. Même si tu ne sais pas encore qui tu es vraiment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">📅 Rendez-vous rapide</h5>
+                        <p class="card-text">3 clics pour réserver. C’est moins que pour commander un café latte triple shot.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">🧘‍♂️ Boost zen</h5>
+                        <p class="card-text">Retrouve la paix intérieure… ou au moins ton mot de passe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="btn btn-outline-light btn-lg px-5">
+                Aller au tableau de bord
+            </a>
+        {% else %}
+            <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-5">
+                Je veux un coach maintenant !
+            </a>
+            <p class="mt-3 text-light">Déjà membre ? <a href="{% url 'login' %}" class="text-white text-decoration-underline">Connecte-toi</a></p>
+        {% endif %}
+
+        <p class="text-white-50 mt-5 small">
+            * Aucun coach n'a été blessé dans la création de cette interface.<br>
+            ** Promis, on ne vous forcera pas à faire du yoga... sauf si vous voulez.
+        </p>
+    </div>
+</div>
 {% endblock %}
