@@ -1,0 +1,21 @@
+.navbar-brand {
+  font-family: 'Pirata One', cursive;
+  font-size: 1.5rem;
+}
+
+.nav-link:hover {
+  color: gold !important;
+  text-shadow: 0 0 3px #ffd700;
+}
+
+.btn-outline-light:hover {
+  background-color: gold;
+  color: #000;
+  border-color: gold;
+}
+
+.btn-outline-warning:hover {
+  background-color: #ffcc00;
+  color: #000;
+  border-color: #ffcc00;
+}

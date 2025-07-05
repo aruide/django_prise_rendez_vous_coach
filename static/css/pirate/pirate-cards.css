@@ -1,0 +1,48 @@
+.pirate-section {
+  background: linear-gradient(145deg, #1d1c1a, #312b23);
+  padding: 4rem 0;
+  font-family: 'Georgia', serif;
+}
+
+.pirate-card {
+  background: url('/static/img/parchment.jpg') center/cover no-repeat;
+  border: 3px solid #8b5e3c;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.pirate-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.pirate-card h5 {
+  color: #5b3315;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px gold;
+}
+
+.pirate-card p {
+  color: #2e2e2e;
+  font-size: 1rem;
+}
+
+.pirate-boussole {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 50px;
+  opacity: 0.3;
+}
+
+.section-title {
+  color: gold;
+  text-shadow: 2px 2px #000;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+}

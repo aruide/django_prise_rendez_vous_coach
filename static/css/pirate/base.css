@@ -1,0 +1,16 @@
+body {
+  background: linear-gradient(145deg, #0f2027, #203a43, #2c5364);
+  font-family: 'Pirata One', cursive;
+}
+
+a.text-white.text-decoration-underline:hover {
+  color: gold !important;
+  text-shadow: 0 0 4px gold;
+}
+
+.pirate-heading {
+  font-family: 'Pirata One', cursive;
+  font-size: 3rem;
+  color: #6b3e26;
+  text-shadow: 2px 2px 0 gold;
+}

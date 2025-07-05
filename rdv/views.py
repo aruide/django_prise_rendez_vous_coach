@@ -5,9 +5,6 @@ from django.shortcuts import render, redirect
 from .forms import SeanceForm
 from .models import Seance
 
-def accueil(request):
-    return render(request, "rdv/accueil.html")
-
 @login_required
 def dashboard(request):
     if request.user.groups.filter(name__in=['coach', 'coach admin']).exists() or request.user.is_superuser:

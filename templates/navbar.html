@@ -1,49 +1,61 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(0, 149, 255);" data-bs-theme="dark">
+{% load static %}
+{% load group_filters %}
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(90deg, #4b2e1a, #1a1a1a); border-bottom: 3px solid gold;" data-bs-theme="dark">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="{% url 'accueil' %}">CoachéCoulé</a>
+    <a class="navbar-brand fw-bold pirate-heading d-flex align-items-center" href="{% url 'accueil' %}">
+      <img src="{% static 'img/logo.png' %}" alt="Logo CoachéCoulé" height="36" class="me-2" style="border-radius: 50%; box-shadow: 0 0 5px gold;">
+      <span style="color: gold;">⚓ CoachéCoulé</span>
+    </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'accueil' %}">Accueil</a>
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'accueil' %}">🏠 Accueil</a>
         </li>
 
         {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link {% if request.path == '/dashboard/' %}active{% endif %}" href="{% url 'dashboard' %}">Tableau de bord</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/dashboard/' %}active{% endif %}" href="{% url 'dashboard' %}">🗺️ Tableau de bord</a>
+        </li>
+        {% endif %}
+
+        {% if not user.is_authenticated or user|has_group:"client" %}
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/info/' %}active{% endif %}" href="{% url 'info' %}">🦜 Qui nous somme</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/objectif/' %}active{% endif %}" href="{% url 'objectif' %}">🎯 Notre objectif</a>
+        </li>
         {% endif %}
       </ul>
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
         {% if user.is_authenticated %}
           {% if user.is_superuser or user.is_staff %}
-            <li class="nav-item me-2">
-              <a class="btn btn-success btn-sm" href="{% url 'admin:index' %}">Admin</a>
-            </li>
+          <li class="nav-item me-2">
+            <a class="btn btn-outline-warning btn-sm" href="{% url 'admin:index' %}">⚙️ Admin</a>
+          </li>
           {% endif %}
           <li class="nav-item">
             <form method="post" action="{% url 'logout' %}">
               {% csrf_token %}
-              <button type="submit" class="btn btn-danger btn-sm">Déconnexion</button>
+              <button type="submit" class="btn btn-danger btn-sm">☠️ Déconnexion</button>
             </form>
           </li>
         {% else %}
           <li class="nav-item me-2">
-            <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+            <a class="nav-link" href="{% url 'login' %}">🔐 Connexion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}">Inscription</a>
+            <a class="btn btn-outline-light btn-sm" href="{% url 'signup' %}">🧭 Inscription</a>
           </li>
         {% endif %}
       </ul>
-
     </div>
   </div>
 </nav>
