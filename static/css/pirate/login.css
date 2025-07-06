@@ -1,0 +1,39 @@
+.login-card {
+  background: rgba(15, 32, 39, 0.95); /* sombre mais lisible */
+  border: 2px solid #8b5e3c;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+  max-width: 420px;
+  width: 100%;
+  color: #f8f9fa;
+}
+
+.login-title {
+  font-size: 2.2rem;
+  font-family: 'Pirata One', cursive;
+  color: gold;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.login-subtitle {
+  color: #ccc;
+  font-style: italic;
+}
+
+.btn-login {
+  background-color: gold;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #ffcc00;
+  box-shadow: 0 0 10px gold;
+}
+
+.form-label {
+  color: #fdf5e6;
+}

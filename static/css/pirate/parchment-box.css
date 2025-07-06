@@ -1,0 +1,23 @@
+.parchment-box {
+  background: #f8f1dc;
+  border: 2px dashed #8b5e3c;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Georgia', serif;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.parchment-box::before {
+  content: '☠️';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  background: #fff3cd;
+  border: 2px solid #8b5e3c;
+  border-radius: 50%;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.5rem;
+  transform: rotate(-10deg);
+}

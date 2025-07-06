@@ -1,16 +1,22 @@
-body {
-  background: linear-gradient(145deg, #0f2027, #203a43, #2c5364);
-  font-family: 'Pirata One', cursive;
-}
-
-a.text-white.text-decoration-underline:hover {
+a:hover, .nav-link:hover {
   color: gold !important;
   text-shadow: 0 0 4px gold;
 }
 
-.pirate-heading {
+.navbar-brand {
   font-family: 'Pirata One', cursive;
-  font-size: 3rem;
-  color: #6b3e26;
-  text-shadow: 2px 2px 0 gold;
+  font-size: 1.8rem;
+  color: gold;
+}
+
+.btn-outline-light:hover {
+  /* background-color: gold; */
+  color: #000;
+  border-color: gold;
+}
+
+.btn-outline-warning:hover {
+  background-color: #ffcc00;
+  color: #000;
+  border-color: #ffcc00;
 }
