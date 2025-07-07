@@ -9,31 +9,76 @@
       <a href="{% url 'prendre_rdv' %}" class="btn btn-success fw-semibold">📅 Prendre un rendez-vous</a>
     </div>
 
-    {% if seances %}
-      <h4 class="text-white-50 mb-3">🗓️ Mes rendez-vous à venir :</h4>
-      <div class="table-responsive">
-        <table class="table table-dark table-hover table-striped border rounded overflow-hidden">
-          <thead class="table-light text-dark">
-            <tr>
-              <th>Date</th>
-              <th>Heure</th>
-              <th>Objet</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for seance in seances %}
-            <tr>
+    <h4 class="text-white-50 mb-3" id="avenir">🗓️ Séances à venir :</h4>
+    <div class="table-responsive">
+      <table class="table table-dark table-hover table-striped border rounded overflow-hidden">
+        <thead class="table-light text-dark">
+          <tr>
+            <th>Date</th>
+            <th>Heure</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for seance in seances_avenir %}
+            <tr onclick="window.location.href='{% url 'seance_detail' seance.id %}'" style="cursor: pointer;">
               <td>{{ seance.date }}</td>
               <td>{{ seance.heure_debut }}</td>
-              <td>{{ seance.objet }}</td>
             </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    {% else %}
-      <p class="text-warning">Aucun rendez-vous prévu pour l'instant.</p>
+          {% empty %}
+            <tr><td colspan="3">Aucune séance à venir.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if seances_avenir.paginator.num_pages > 1 %}
+    <div class="pagination text-white d-flex justify-content-between align-items-center">
+      {% if seances_avenir.has_previous %}
+        <a href="?page_avenir={{ seances_avenir.previous_page_number }}#avenir" class="btn btn-outline-light">← Précédent</a>
+      {% endif %}
+      <span>Page {{ seances_avenir.number }} / {{ seances_avenir.paginator.num_pages }}</span>
+      {% if seances_avenir.has_next %}
+        <a href="?page_avenir={{ seances_avenir.next_page_number }}#avenir" class="btn btn-outline-light">Suivant →</a>
+      {% endif %}
+    </div>
     {% endif %}
+
+    <hr class="my-5">
+
+    <h4 class="text-white-50 mb-3" id="passees">🏴‍☠️ Séances passées :</h4>
+    <div class="table-responsive">
+      <table class="table table-dark table-hover table-striped border rounded overflow-hidden">
+        <thead class="table-light text-dark">
+          <tr>
+            <th>Date</th>
+            <th>Heure</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for seance in seances_passees %}
+            <tr onclick="window.location.href='{% url 'seance_detail' seance.id %}'" style="cursor: pointer;">
+              <td>{{ seance.date }}</td>
+              <td>{{ seance.heure_debut }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="3">Aucune séance passée.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if seances_passees.paginator.num_pages > 1 %}
+    <div class="pagination text-white d-flex justify-content-between align-items-center">
+      {% if seances_passees.has_previous %}
+        <a href="?page_passees={{ seances_passees.previous_page_number }}#passees" class="btn btn-outline-light">← Précédent</a>
+      {% endif %}
+      <span>Page {{ seances_passees.number }} / {{ seances_passees.paginator.num_pages }}</span>
+      {% if seances_passees.has_next %}
+        <a href="?page_passees={{ seances_passees.next_page_number }}#passees" class="btn btn-outline-light">Suivant →</a>
+      {% endif %}
+    </div>
+    {% endif %}
+
   </div>
 </div>
 {% endblock %}

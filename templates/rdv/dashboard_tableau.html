@@ -1,0 +1,32 @@
+<h2 class="mt-4">{{ titre }}</h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Heure</th>
+      <th>{{ label_autre }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for seance in page_obj %}
+      <tr>
+        <td>{{ seance.date }}</td>
+        <td>{{ seance.heure_debut }}</td>
+        <td>{{ seance.autre }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="3">Aucune séance</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between">
+  {% if page_obj.has_previous %}
+    <a href="?{{ page_query }}={{ page_obj.previous_page_number }}" class="btn btn-secondary">⬅️ Précédent</a>
+  {% else %}
+    <span></span>
+  {% endif %}
+  {% if page_obj.has_next %}
+    <a href="?{{ page_query }}={{ page_obj.next_page_number }}" class="btn btn-secondary">Suivant ➡️</a>
+  {% endif %}
+</div>

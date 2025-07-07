@@ -3,11 +3,36 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth import get_user_model
 from .proxy_models import Coach, SuperCoach, Client
+from .forms import CustomUserChangeForm
 
 User = get_user_model()
 
+admin.site.site_header = "⛵ Admin de CoachéCoulé"
+admin.site.site_title = "Admin - CoachéCoulé"
+admin.site.index_title = "Tableau de bord pirate"
+
+liste_fieldsets = (
+            (None, {'fields': ('username', 'password')}),
+            ('Informations personnelles', {'fields': ('first_name', 'last_name', 'email', 'photo')}),
+            ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+            ('Dates importantes', {'fields': ('last_login', 'date_joined')}),
+        )
+
+liste_add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username', 'first_name', 'last_name', 'email', 'photo', 'password1', 'password2'),
+        }),
+    )
+
 # === Admin pour Coach ===
 class CoachAdmin(BaseUserAdmin):
+    form = CustomUserChangeForm
+
+    fieldsets = liste_fieldsets
+
+    add_fieldsets = liste_add_fieldsets
+    
     def save_model(self, request, obj, form, change):
         is_new = obj.pk is None
         obj.is_staff = True  # coach n'est pas staff
@@ -35,6 +60,12 @@ class CoachAdmin(BaseUserAdmin):
 
 # === Admin pour SuperCoach ===
 class SuperCoachAdmin(BaseUserAdmin):
+    form = CustomUserChangeForm
+
+    fieldsets = liste_fieldsets
+
+    add_fieldsets = liste_add_fieldsets
+    
     def save_model(self, request, obj, form, change):
         is_new = obj.pk is None
         obj.is_staff = True  # supercoach est staff
@@ -60,6 +91,12 @@ class SuperCoachAdmin(BaseUserAdmin):
             return qs
         
 class ClientAdmin(BaseUserAdmin):
+    form = CustomUserChangeForm
+
+    fieldsets = liste_fieldsets
+
+    add_fieldsets = liste_add_fieldsets
+    
     def save_model(self, request, obj, form, change):
         is_new = obj.pk is None
         obj.is_staff = False  # client n'est pas staff

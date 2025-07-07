@@ -1,5 +1,5 @@
 .pirate-section {
-  background: linear-gradient(145deg, #1d1c1a, #312b23);
+  /* background: linear-gradient(145deg, #1d1c1a, #312b23); */
   padding: 4rem 0;
   font-family: 'Georgia', serif;
 }
@@ -37,7 +37,6 @@
   top: -20px;
   right: -20px;
   width: 50px;
-  opacity: 0.3;
 }
 
 .section-title {
@@ -46,4 +45,16 @@
   margin-bottom: 3rem;
   font-size: 2.5rem;
   text-align: center;
+}
+
+.pirate-comment {
+  font-family: "Caveat", "Homemade Apple", cursive;
+  font-size: 1.3rem;
+  color: #3b2f2f;
+  background: rgba(255, 245, 200, 0.7);
+  border-left: 4px solid #b8860b;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  font-style: italic;
 }
