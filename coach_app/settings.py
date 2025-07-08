@@ -71,14 +71,6 @@ TEMPLATES = [
             ],
         },
     },
-    {
-        'BACKEND': 'django.template.backends.jinja2.Jinja2',
-        'DIRS': [BASE_DIR / 'templates'],  # Crée un dossier différent ou laisser celui de base
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'environment': 'coach_app.jinja2.environment',
-        },
-    },
 ]
 
 WSGI_APPLICATION = 'coach_app.wsgi.application'
@@ -98,6 +90,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
+# a decommenter pour ajouter de la sécurité lors de la création des mdp et du username
 AUTH_PASSWORD_VALIDATORS = [
     #{
     #    'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -149,7 +142,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# pour mailcatcher
+# pour envoie mail (config avec mailcatcheur donc à modif en prod)
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 EMAIL_HOST_USER = ''
@@ -157,11 +150,3 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = 'pirate@bateau-noir.fr'
-
-# pour réel
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'coache.coule@gmail.com'
-# EMAIL_HOST_PASSWORD = 'kgxg jzdh qwvn ltah'
-# DEFAULT_FROM_EMAIL = 'Ton Site <coache.coule@gmail.com>'

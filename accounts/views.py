@@ -17,9 +17,16 @@ from django.contrib.auth import get_user_model
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
+from core.decorators import logout_required
+
+from django.contrib.auth.decorators import user_passes_test
+from django.utils.decorators import method_decorator
+from django.contrib.auth import views as auth_views
+from django.urls import path
 
 User = get_user_model()
 
+@logout_required
 def signup(request):
     if request.method == "POST":
         form = CustomSignupForm(request.POST)
@@ -89,7 +96,7 @@ def activate(request, uidb64, token):
 def mon_compte(request):
     user = request.user
     
-    if user.groups.filter(name__in=["coach", "coach admin"]).exists():
+    if user.groups.filter(name__in=["coach", "coach admin"]).exists() or user.is_superuser:
         role = "Coach"
     else:
         role = "Client"
@@ -98,3 +105,7 @@ def mon_compte(request):
         'user': user,
         'role': role
     })
+    
+@method_decorator(logout_required, name='dispatch')
+class CustomLoginView(auth_views.LoginView):
+    template_name = 'accounts/login.html'

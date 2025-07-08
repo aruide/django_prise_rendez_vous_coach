@@ -1,0 +1,30 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="footer-pirate mt-auto py-4">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    
+    <!-- Logo & Titre -->
+    <div class="d-flex align-items-center mb-3 mb-md-0">
+        <div class="footer-social mt-2">
+        <a href="#" class="footer-link me-3 pirate-font" title="Facebook"><i class="bi bi-facebook"></i> Facebook</a>
+        <a href="#" class="footer-link me-3 pirate-font" title="Twitter"><i class="bi bi-twitter-x"></i> Twitter</a>
+        <a href="#" class="footer-link pirate-font" title="LinkedIn"><i class="bi bi-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- Horaires + Réseaux sociaux -->
+    <div class="text-center text-md-start mb-3 mb-md-0">
+      <div class="footer-hours">
+        🕰️ Ouvert du lundi au vendredi : <strong>de 8h à 20h</strong><br />
+        Fermé le week-end, sauf en cas de mutinerie.
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-copy  small ">
+      🏴‍☠️ © {{ now|date:"Y" }} CoachéCoulé — Tous droits réservés.<br />
+      Naviguez avec sagesse… ou marchez sur la planche !
+    </div>
+  </div>
+</div>

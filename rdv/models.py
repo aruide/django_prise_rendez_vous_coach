@@ -9,7 +9,7 @@ class Seance(models.Model):
     note_coach = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.date} à {self.heure_debut} - {self.client.username}"
+        return self.client.username
 
     class Meta:
         unique_together = ('date', 'heure_debut')  # Évite les conflits

@@ -36,6 +36,5 @@
 .logo-ship-large {
   max-width: 25%;
   margin-bottom: -60px; /* remonte la pancarte sous le logo */
-  margin-top: 5%;      /* éloigne un peu du haut de la page */
   z-index: 2;
 }

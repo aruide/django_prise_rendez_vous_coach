@@ -1,19 +1,17 @@
 .hero-section {
-  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  min-height: 100vh;
   background: url("/static/img/mer.jpg") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
-  z-index: -1;  /* très important pour ne pas masquer le reste */
+  z-index: 0;  /* très important pour ne pas masquer le reste */
   overflow-x: hidden;  /* OK pour éviter le scroll horizontal */
   overflow-y: auto;    /* ✅ Laisse le scroll vertical naturel */
 }
 
-.hero-overlay {
-  background-color: rgba(0, 0, 0, 0.6);
+ .hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;

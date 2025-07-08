@@ -20,7 +20,7 @@
             <tr onclick="window.location.href='{% url 'seance_detail' seance.id %}'" style="cursor: pointer;">
               <td>{{ seance.date }}</td>
               <td>{{ seance.heure_debut }}</td>
-              <td>{{ seance.client }}</td>
+              <td>{{ seance.client.username }}</td>
             </tr>
           {% empty %}
             <tr><td colspan="3">Aucune séance à venir.</td></tr>
@@ -58,7 +58,7 @@
             <tr onclick="window.location.href='{% url 'seance_detail' seance.id %}'" style="cursor: pointer;">
               <td>{{ seance.date }}</td>
               <td>{{ seance.heure_debut }}</td>
-              <td>{{ seance.client }}</td>
+              <td>{{ seance.client.username }}</td>
             </tr>
           {% empty %}
             <tr><td colspan="3">Aucune séance passée.</td></tr>

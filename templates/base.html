@@ -2,36 +2,47 @@
 {% load static %}
 {% load widget_tweaks %}
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}CoachéCoulé{% endblock %}</title>
-    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/fonts.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/nav.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/hero.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/bouton.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/lists.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/parchment-box.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/parchment.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/pirate-cards.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/login.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/dashboard.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pirate/home.css' %}">
-</head>
-<body>
-    <header>
-        {% include "navbar.html" %}
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+        CoachéCoulé
+      {% endblock %}
+    </title>
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap-icons/bootstrap-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/fonts.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/hero.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/bouton.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/lists.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/parchment-box.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/parchment.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/pirate-cards.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pirate/footer.css' %}" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <header style="z-index: 2;">
+      {% include 'navbar.html' %}
     </header>
-    <main>
-        <div class="hero-section">
+    <main class="flex-grow-1">
+      <div class="hero-section">
         <div class="hero-overlay"></div>
-        <div class="container hero-content py-5">
-        {% block content %}{% endblock %}
+        <div class="container hero-content py-5 position-relative" style="z-index: 1;">
+          {% block content %}
+
+          {% endblock %}
         </div>
-        </div>
+      </div>
     </main>
+    <footer style="z-index: 1;">
+      {% include 'footer.html' %}
+    </footer>
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-</body>
+  </body>
 </html>

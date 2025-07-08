@@ -13,7 +13,7 @@ admin.site.index_title = "Tableau de bord pirate"
 
 liste_fieldsets = (
             (None, {'fields': ('username', 'password')}),
-            ('Informations personnelles', {'fields': ('first_name', 'last_name', 'email', 'photo')}),
+            ('Informations personnelles', {'fields': ('first_name', 'last_name', 'email', 'photo', 'description_personnelle')}),
             ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
             ('Dates importantes', {'fields': ('last_login', 'date_joined')}),
         )
@@ -21,7 +21,7 @@ liste_fieldsets = (
 liste_add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'first_name', 'last_name', 'email', 'photo', 'password1', 'password2'),
+            'fields': ('username', 'first_name', 'last_name', 'email', 'photo', 'password1', 'password2', 'description_personnelle'),
         }),
     )
 

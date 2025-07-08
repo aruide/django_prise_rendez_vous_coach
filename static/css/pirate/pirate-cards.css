@@ -58,3 +58,113 @@
   box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
   font-style: italic;
 }
+
+.wanted-card {
+  background: url('/static/img/wanted_blank.png') no-repeat center center;
+  background-size: cover;
+  width: 300px;
+  height: 450px;
+  padding: 2rem 1rem;
+  margin: 1rem auto;
+  color: #3b2f2f;
+  font-family: 'Pirata One', cursive;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border: 2px solid #5c4326;
+  position: relative;
+}
+
+.wanted-frame {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  border: 3px solid #5c4326;
+}
+
+.wanted-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wanted-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.wanted-username {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #6e4d30;
+}
+
+.wanted-description {
+  font-size: 0.85rem;
+  max-height: 120px;
+  overflow-y: auto;
+  padding: 0 0.5rem;
+}
+
+
+.card-personne {
+      width: 350px;
+      padding: 30px;
+      background: url('/static/img/parchment.jpg') center center;
+      background-size: cover;
+      border: 5px solid #5c3b1e;
+      height:max-content;
+      margin: 1rem auto;
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      color: #3b2a1b;
+    }
+    
+    .card-wanted-title {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    
+    .card-status {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    
+    .card-profile-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 4px solid #3b2a1b;
+      margin-bottom: 20px;
+    }
+    
+    .card-name {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    
+    .card-alias {
+      font-size: 18px;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    
+    .card-bounty {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #8b0000;
+    }
+    
+    .card-crimes {
+      font-size: 16px;
+      text-align: left;
+      margin: 0 auto;
+      max-width: 280px;
+    }
+    
+    .card-crimes li {
+      margin-bottom: 5px;
+    }
