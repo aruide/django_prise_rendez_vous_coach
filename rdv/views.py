@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import SeanceForm
+from .forms import SeanceForm, AnnulationForm
 from .models import Seance
 
 from django.shortcuts import render
@@ -10,6 +10,12 @@ from datetime import datetime
 from .models import Seance
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
+
+from django.shortcuts import get_object_or_404
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django import forms
+from .models import Seance
 
 @login_required
 def dashboard(request):
@@ -76,3 +82,24 @@ def seance_detail(request, seance_id):
         return redirect('seance_detail', seance_id=seance.id)
 
     return render(request, 'rdv/seance_detail.html', {'seance': seance, 'is_coach': is_coach})
+
+
+@login_required
+def annuler_seance(request, seance_id):
+    seance = get_object_or_404(Seance, id=seance_id)
+
+    if request.method == 'POST':
+        form = AnnulationForm(request.POST, instance=seance)
+        if form.is_valid():
+            seance = form.save(commit=False)
+            seance.statut = 'annule'
+            seance.save()
+            messages.success(request, "La séance a été annulée.")
+            return redirect('dashboard')  # ← à adapter à ton nom de vue dashboard
+    else:
+        form = AnnulationForm(instance=seance)
+
+    return render(request, 'rdv/annule_seance.html', {
+        'form': form,
+        'seance': seance
+    })

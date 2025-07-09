@@ -1,4 +1,4 @@
 django
 django-extensions
-jinja2
 django-widget-tweaks
+python-slugify

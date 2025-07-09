@@ -27,6 +27,16 @@
           <th>Objet</th>
           <td>{{ seance.objet }}</td>
         </tr>
+        <tr>
+          <th>Statut</th>
+          <td>{{ seance.statut }}</td>
+        </tr>
+        {% if seance.statut == "annule"%}
+        <tr>
+          <th>Motif annulation</th>
+          <td>{{ seance.motif_annulation }}</td>
+        </tr>
+        {% endif %}
 
         {% if is_coach %}
         <tr>

@@ -47,3 +47,17 @@ class SeanceForm(forms.ModelForm):
                 raise forms.ValidationError("Un autre rendez-vous est trop proche (10 min).")
 
         return cleaned_data
+
+class AnnulationForm(forms.ModelForm):
+    class Meta:
+        model = Seance
+        fields = ['motif_annulation']
+        widgets = {
+            'motif_annulation': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
+        }
+
+    def clean_motif_annulation(self):
+        motif = self.cleaned_data.get('motif_annulation', '').strip()
+        if not motif:
+            raise forms.ValidationError("Vous devez saisir un motif d'annulation.")
+        return motif
