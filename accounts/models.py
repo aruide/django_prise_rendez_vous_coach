@@ -4,8 +4,6 @@ import os
 from slugify import slugify
 
 class CustomUser(AbstractUser):
-    prenom = models.CharField(max_length=100, verbose_name="Prénom")
-    nom = models.CharField(max_length=100, verbose_name="Nom")
     photo = models.ImageField(upload_to='photos/', null=True, blank=True)
     description_personnelle = models.TextField(verbose_name="Description personelle", blank=True, null=True)
 
@@ -38,4 +36,4 @@ class CustomUser(AbstractUser):
         super().delete(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.username} ({self.nom} {self.prenom})"
+        return f"{self.username} ({self.first_name} {self.last_name})"
