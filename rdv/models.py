@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
 
+# création du modele pour la prise de RDV
 class Seance(models.Model):
     STATUT_CHOICES = [
         ('actif', 'Actif'),
@@ -26,6 +27,7 @@ class Seance(models.Model):
         help_text="Motif de l'annulation (à remplir si statut = annulé)"
     )
     
+    # vérif lors de la sauvegarde
     def clean(self):
         if self.statut == 'annule' and not self.motif_annulation:
             raise ValidationError("Le motif d'annulation est obligatoire si la séance est annulée.")

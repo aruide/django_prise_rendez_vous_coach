@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+# === changer la categorie dans l'admin ===
 class Coach(User):
     class Meta:
         proxy = True

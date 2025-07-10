@@ -3,10 +3,12 @@ from django.db import models
 import os
 from slugify import slugify
 
+# reprendre le modele user existant afin de le modifier
 class CustomUser(AbstractUser):
     photo = models.ImageField(upload_to='photos/', null=True, blank=True)
     description_personnelle = models.TextField(verbose_name="Description personelle", blank=True, null=True)
 
+    #verif de la photo (changer le nom) pour la sauvegarde
     def save(self, *args, **kwargs):
         try:
             old_user = CustomUser.objects.get(pk=self.pk)
@@ -30,6 +32,7 @@ class CustomUser(AbstractUser):
 
         super().save(*args, **kwargs)    
     
+    #supprimer la photo si le compte est supprimer
     def delete(self, *args, **kwargs):
         if self.photo:
             self.photo.delete(save=False)

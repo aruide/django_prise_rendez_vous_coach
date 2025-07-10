@@ -2,6 +2,7 @@ from django import forms
 from .models import Seance
 from datetime import datetime, timedelta
 
+# === création du formulaire pour la prise de RDV ===
 class SeanceForm(forms.ModelForm):
     class Meta:
         model = Seance
@@ -12,11 +13,13 @@ class SeanceForm(forms.ModelForm):
             'objet': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
+    # lors de la sauvegarde
     def clean(self):
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
         heure = cleaned_data.get('heure_debut')
 
+        #vérification pour la date et l'heure
         if date and heure:
             now = datetime.now().date()
 
@@ -38,6 +41,7 @@ class SeanceForm(forms.ModelForm):
             debut_min = (datetime.combine(date, heure) - timedelta(minutes=10)).time()
             debut_max = (datetime.combine(date, heure) + timedelta(minutes=10)).time()
 
+            # vérifier dans la bdd si une séance et déja prévu (ou dans les environs de 10 min)
             overlapping = Seance.objects.filter(
                 date=date,
                 heure_debut__gte=debut_min,
@@ -48,6 +52,7 @@ class SeanceForm(forms.ModelForm):
 
         return cleaned_data
 
+# === formulaire d'annulation d'un RDV (pour les coach)
 class AnnulationForm(forms.ModelForm):
     class Meta:
         model = Seance
@@ -56,6 +61,7 @@ class AnnulationForm(forms.ModelForm):
             'motif_annulation': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
         }
 
+    # vérif si un motif et inscrit lors de l'annulation
     def clean_motif_annulation(self):
         motif = self.cleaned_data.get('motif_annulation', '').strip()
         if not motif:

@@ -123,7 +123,7 @@ class ClientAdmin(BaseUserAdmin):
             return qs
 
 
-# === Enregistrement des modèles proxy ===
+# Enregistrement des modèles proxy
 admin.site.register(Coach, CoachAdmin)
 admin.site.register(SuperCoach, SuperCoachAdmin)
 admin.site.register(Client, ClientAdmin)

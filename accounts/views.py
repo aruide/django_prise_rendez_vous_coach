@@ -11,18 +11,14 @@ from django.contrib.auth.models import Group
 from django.urls import reverse
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
-
 from .forms import CustomSignupForm
 from django.contrib.auth import get_user_model
 from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from core.decorators import logout_required
 
-from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
 from django.contrib.auth import views as auth_views
-from django.urls import path
 
 User = get_user_model()
 
@@ -47,8 +43,6 @@ def signup(request):
             activation_link = reverse('activate', kwargs={'uidb64': uid, 'token': token})
             activation_url = f"http://{current_site.domain}{activation_link}"
 
-            print("🔗 Lien d’activation :", activation_url)  # Pour debug
-
             # Préparer l'email
             subject = "Confirmez votre inscription"
             from_email = 'noreply@monsite.fr'
@@ -66,9 +60,9 @@ def signup(request):
                 email = EmailMultiAlternatives(subject, text_content, from_email, to_email)
                 email.attach_alternative(html_content, "text/html")
                 email.send()
-                print("✅ Email envoyé à", user.email)
+                print("Email envoyé à", user.email)
             except Exception as e:
-                print("❌ Erreur lors de l'envoi de l'email :", e)
+                print("Erreur lors de l'envoi de l'email :", e)
 
             return render(request, 'accounts/confirmation_sent.html')
 
@@ -88,7 +82,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        return redirect("dashboard")  # ou une page de confirmation
+        return redirect("dashboard")
     else:
         return render(request, "accounts/activation_invalid.html")
 
