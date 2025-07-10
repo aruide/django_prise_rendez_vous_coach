@@ -45,6 +45,7 @@ Ce thème pirate rend la navigation plus ludique tout en renforçant le message 
 ├── rdv/                         # Application principale de gestion des rendez-vous
 │   ├── migrations/              # Fichiers de migration pour les modèles
 │   ├── tests/                   # Tests unitaires de l'application (modèles, vues, formulaires)
+│   ├── services/                # Fonction utilisé dans les views
 │   ├── admin.py                 # Configuration de l'interface d'administration
 │   ├── apps.py                  # Configuration de l’application `rdv`
 │   ├── forms.py                 # Formulaires personnalisés (prise de RDV, annulation)
@@ -55,6 +56,7 @@ Ce thème pirate rend la navigation plus ludique tout en renforçant le message 
 ├── accounts/                    # Application pour la gestion des comptes utilisateurs
 │   ├── migrations/
 │   ├── tests/
+│   ├── services/                
 │   ├── admin.py
 │   ├── apps.py
 │   ├── forms.py
@@ -64,6 +66,7 @@ Ce thème pirate rend la navigation plus ludique tout en renforçant le message 
 │
 ├── siteweb/                     # Application pour le contenu général du site (accueil, contact…)
 │   ├── tests/
+│   ├── services/                
 │   ├── admin.py
 │   ├── apps.py
 │   ├── forms.py
