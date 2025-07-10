@@ -1,11 +1,11 @@
+# Django Prise de Rendez-vous Coach/Client
+
 ![MCD](image_readme/banniere.png)
 
 [![Licence](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![Django](https://img.shields.io/badge/Django-5.2.4-orange)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-violet)
-
-# Django Prise de Rendez-vous Coach/Client
 
 ## 📘 Présentation du projet
 
@@ -45,6 +45,7 @@ Ce thème pirate rend la navigation plus ludique tout en renforçant le message 
 ├── rdv/                         # Application principale de gestion des rendez-vous
 │   ├── migrations/              # Fichiers de migration pour les modèles
 │   ├── tests/                   # Tests unitaires de l'application (modèles, vues, formulaires)
+│   ├── services/                # Fonction utilisé dans les views
 │   ├── admin.py                 # Configuration de l'interface d'administration
 │   ├── apps.py                  # Configuration de l’application `rdv`
 │   ├── forms.py                 # Formulaires personnalisés (prise de RDV, annulation)
@@ -55,6 +56,7 @@ Ce thème pirate rend la navigation plus ludique tout en renforçant le message 
 ├── accounts/                    # Application pour la gestion des comptes utilisateurs
 │   ├── migrations/
 │   ├── tests/
+│   ├── services/                
 │   ├── admin.py
 │   ├── apps.py
 │   ├── forms.py
@@ -64,6 +66,7 @@ Ce thème pirate rend la navigation plus ludique tout en renforçant le message 
 │
 ├── siteweb/                     # Application pour le contenu général du site (accueil, contact…)
 │   ├── tests/
+│   ├── services/                
 │   ├── admin.py
 │   ├── apps.py
 │   ├── forms.py
@@ -150,6 +153,12 @@ pip install -r requirements.txt
 5. creer les migrations :
 ```bash
 python manage.py makemigrations
+```
+
+si les dossiers de migration ne sont pas creer, utiliser ces commande:
+```bash
+python manage.py makemigrations accounts
+python manage.py makemigrations rdv
 ```
 
 6. Appliquer les migrations :
