@@ -1,0 +1,23 @@
+/* static/css/admin.css */
+
+@font-face {
+  font-family: 'Pirata One';
+  src: url("/static/fonts/PirataOne-Regular.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#site-name {
+  font-family: "Pirata One", cursive;
+  color: #8b0000;
+}
+
+.module caption {
+  background-color: #f5f5dc;
+}
+
+.module caption .section{
+    color:black;
+    font-weight: bold;
+    font-style: italic;
+}

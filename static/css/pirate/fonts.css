@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Pirata One';
+  src: url("/static/fonts/PirataOne-Regular.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* body {
+  font-family: 'Pirata One', cursive;
+  background: linear-gradient(145deg, #0f2027, #203a43, #2c5364);
+  color: #f8f9fa;
+} */
+
+body {
+  font-family: 'Inter', sans-serif; /* ou autre police moderne par défaut */
+}
+
+.pirate-font {
+  font-family: 'Pirata One', cursive; /* ou ta police pirate personnalisée */
+}

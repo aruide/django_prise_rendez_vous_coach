@@ -1,0 +1,78 @@
+/* Pour tableau de bord moderne */
+.dashboard-wrapper {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-card {
+  background: rgba(13, 24, 36, 0.85);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8f9fa;
+}
+
+/* Table style */
+.table thead th {
+  font-weight: bold;
+  text-align: center;
+}
+
+.table tbody td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* Pour éviter la police pirate héritée */
+.dashboard-wrapper * {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.dashboard-wrapper {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-card {
+  background: rgba(13, 24, 36, 0.85);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8f9fa;
+}
+
+.table thead th {
+  font-weight: bold;
+  text-align: center;
+}
+
+.table tbody td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.dashboard-wrapper {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-card {
+  background: rgba(13, 24, 36, 0.85);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8f9fa;
+}
+
+.dashboard-card label {
+  font-weight: 600;
+}
+
+.dashboard-card input,
+.dashboard-card select,
+.dashboard-card textarea {
+  background-color: #f1f1f1;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.dashboard-card button {
+  font-size: 1rem;
+}

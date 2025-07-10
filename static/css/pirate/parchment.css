@@ -1,0 +1,25 @@
+@keyframes unfold {
+  0% { transform: scaleY(0); opacity: 0; }
+  60% { transform: scaleY(1.2); opacity: 1; }
+  100% { transform: scaleY(1); }
+}
+
+.parchment-card {
+  background: #fdf5e6;
+  border: 3px solid #8b5e3c;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  max-width: 700px;
+  width: 90%;
+  margin: 2rem auto;
+  animation: unfold 1.2s ease-out forwards;
+  transform-origin: top center;
+}
+
+.parchment-footer {
+  color: black;
+  font-size: 0.85rem;
+  margin-top: 2rem;
+  text-align: center;
+}

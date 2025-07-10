@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-start pt-5 flex-column text-center">
+
+  <div class="parchment-card mx-auto mt-3">
+    <h1 class="mb-4 pirate-font text-dark">Presque à bord, moussaillon !</h1>
+    <p class="lead mb-3" style="font-family: 'Georgia', serif; color: #333;">
+      ⚓ Un message a été envoyé à ton adresse mail pour confirmer ton embarquement.
+    </p>
+    <p class="mb-3" style="font-family: 'Georgia', serif; color: #555;">
+      Clique sur le lien du message pour activer ton compte et rejoindre l’équipage.
+    </p>
+    <p class="text-muted" style="font-size: 0.9em; font-family: 'Georgia', serif;">
+      🕵️‍♀️ Si tu n’aperçois point le courrier, va jeter un œil dans la cale des spams.
+    </p>
+
+    <img src="{% static 'img/parrot-email.png' %}" alt="Perroquet messager"
+         class="img-fluid mt-4" style="max-width: 200px;">
+  </div>
+</div>
+{% endblock %}

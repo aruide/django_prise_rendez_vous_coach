@@ -1,0 +1,4 @@
+django
+django-extensions
+django-widget-tweaks
+python-slugify
