@@ -2,47 +2,26 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import SeanceForm, AnnulationForm
 from .models import Seance
-from django.utils.timezone import make_aware
-from datetime import datetime
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
+from .services.seance_services import is_user_coach, get_user_seances, split_seances_future_past, user_can_view_seance, update_note_coach, annuler_seance_instance
 
 @login_required
 def dashboard(request):
-    now = make_aware(datetime.now())
-
-    is_coach = request.user.groups.filter(name__in=['coach', 'coach admin']).exists() or request.user.is_superuser
-
-    if is_coach:
-        seances = Seance.objects.all().order_by('date', 'heure_debut')
-    else:
-        seances = Seance.objects.filter(client=request.user).order_by('date', 'heure_debut')
-
-    # Séparer à venir et passées
-    seances_avenir = [s for s in seances if make_aware(datetime.combine(s.date, s.heure_debut)) >= now]
-    seances_passees = [s for s in seances if make_aware(datetime.combine(s.date, s.heure_debut)) < now]
-
-    # Pagination
-    page_avenir = request.GET.get('page_avenir')
-    page_passees = request.GET.get('page_passees')
-
-    paginator_avenir = Paginator(seances_avenir, 5)
-    paginator_passees = Paginator(seances_passees, 5)
-
-    seances_avenir_page = paginator_avenir.get_page(page_avenir)
-    seances_passees_page = paginator_passees.get_page(page_passees)
+    seances = get_user_seances(request.user)
+    seances_avenir, seances_passees = split_seances_future_past(seances)
 
     context = {
-        'seances_avenir': seances_avenir_page,
-        'seances_passees': seances_passees_page,
+        'seances_avenir': Paginator(seances_avenir, 5).get_page(request.GET.get('page_avenir')),
+        'seances_passees': Paginator(seances_passees, 5).get_page(request.GET.get('page_passees')),
         'user': request.user,
     }
 
-    if is_coach:
-        return render(request, 'rdv/dashboard_coach.html', context)
-    else:
-        return render(request, 'rdv/dashboard_client.html', context)
+    template = 'rdv/dashboard_coach.html' if is_user_coach(request.user) else 'rdv/dashboard_client.html'
+    return render(request, template, context)
+
+
 @login_required
 def prendre_rdv(request):
     if request.method == "POST":
@@ -60,20 +39,16 @@ def prendre_rdv(request):
 def seance_detail(request, seance_id):
     seance = get_object_or_404(Seance, id=seance_id)
 
-    # Permissions : un client ne peut voir que ses séances
-    if request.user.groups.filter(name='client').exists() and seance.client != request.user:
+    if not user_can_view_seance(request.user, seance):
         return render(request, '403.html', status=403)
 
-    is_coach = request.user.groups.filter(name__in=['coach', 'coach admin']).exists() or request.user.is_superuser
+    is_coach = is_user_coach(request.user)
 
     if request.method == 'POST' and is_coach:
-        new_note = request.POST.get('note_coach')
-        seance.note_coach = new_note
-        seance.save()
+        update_note_coach(seance, request.POST.get('note_coach'))
         return redirect('seance_detail', seance_id=seance.id)
 
     return render(request, 'rdv/seance_detail.html', {'seance': seance, 'is_coach': is_coach})
-
 
 @login_required
 def annuler_seance(request, seance_id):
@@ -82,9 +57,8 @@ def annuler_seance(request, seance_id):
     if request.method == 'POST':
         form = AnnulationForm(request.POST, instance=seance)
         if form.is_valid():
-            seance = form.save(commit=False)
-            seance.statut = 'annule'
-            seance.save()
+            form.save(commit=False)
+            annuler_seance_instance(seance)
             messages.success(request, "La séance a été annulée.")
             return redirect('dashboard')
     else:
