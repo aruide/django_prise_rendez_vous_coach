@@ -1,3 +1,10 @@
+![MCD](image_readme/banniere.png)
+
+[![Licence](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+![Python](https://img.shields.io/badge/Python-3.13-blue)
+![Django](https://img.shields.io/badge/Django-5.2.4-orange)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-violet)
+
 # Django Prise de Rendez-vous Coach/Client
 
 ## 📘 Présentation du projet
